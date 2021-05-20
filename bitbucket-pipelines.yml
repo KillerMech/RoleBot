@@ -9,15 +9,26 @@ options:
   docker: true
 
 pipelines:
-  default:
-    - parallel:
+  branches:
+    production-main:
       - step:
           name: Docker Build
           deployment: production
           caches:
             - pip
           script:
-            - export IMAGE_NAME=thatnerdjoe/botty.py:$BITBUCKET_COMMIT
+            - export IMAGE_NAME=bascogroup/botty.py:$BITBUCKET_COMMIT
+            - docker build -t $IMAGE_NAME
+            - docker login --username $DOCKER_USER --password $DOCKER_PASSS
+            - docker push $IMAGE_NAME
+    testing-main:
+      - step:
+          name: Docker Build
+          deployment: test
+          caches:
+            - pip
+          script:
+            - export IMAGE_NAME=bascogroup/botty-test.py:$BITBUCKET_COMMIT
             - docker build -t $IMAGE_NAME
             - docker login --username $DOCKER_USER --password $DOCKER_PASSS
             - docker push $IMAGE_NAME
