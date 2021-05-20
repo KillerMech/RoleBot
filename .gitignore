@@ -20,8 +20,6 @@
 !**/*.py
 # Unignore JSON files
 !**/*.json
-# Unignore requirements.txt file
-!requirements.txt
 
 
 ###
