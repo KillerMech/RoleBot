@@ -19,7 +19,7 @@ pipelines:
           script:
             - export IMAGE_NAME=bascogroup/botty.py:$BITBUCKET_COMMIT
             - docker build -t $IMAGE_NAME .
-            - docker login --username $DOCKER_USER --password $DOCKER_PASSS
+            - docker login --username $DOCKER_USER --password $DOCKER_PASS
             - docker push $IMAGE_NAME
     testing-main:
       - step:
@@ -30,5 +30,5 @@ pipelines:
           script:
             - export IMAGE_NAME=bascogroup/botty-test.py:$BITBUCKET_COMMIT
             - docker build -t $IMAGE_NAME .
-            - docker login --username $DOCKER_USER --password $DOCKER_PASSS
+            - docker login --username $DOCKER_USER --password $DOCKER_PASS
             - docker push $IMAGE_NAME
