@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-"""
+'''
 *******************************************************************************
 This is a Cog. These structures are used by Discord.py to create classes
 with their own commands, event listeners, and attributes.
@@ -12,7 +12,7 @@ Authors: Joe Miller (@thatnerdjoe)
 Version: 0.3
 Date: 03-24-2021
 *******************************************************************************
-"""
+'''
 
 
 class Botty(commands.Cog, name="Botty McBotface"):
@@ -22,10 +22,10 @@ class Botty(commands.Cog, name="Botty McBotface"):
 
     def __init__(self, bot):
         self.bot = bot
-        print(f"{self.bot.utils.OK} {self.bot.utils.time_log()} Loaded Botty Cog.")
+        print("Loaded Botty Cog.")
 
     def cog_unload(self):
-        print(f"{self.bot.utils.OK} {self.bot.utils.time_log()} Unloaded Botty Cog.")
+        print("Unloaded Botty Cog.")
 
     @commands.command()
     async def ping(self, ctx):
@@ -33,7 +33,6 @@ class Botty(commands.Cog, name="Botty McBotface"):
         A test function for ensuring that extensions and permissions are implemented properly.
         """
         await ctx.send("Hello!")
-        await ctx.confirm()
 
     @commands.command(name="addrole",
                       help="Adds a server role to self. Case insensitive.",

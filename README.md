@@ -35,8 +35,6 @@ pipenv install
 
 ### Contribution guidelines ###
 
-- Before writing code, it is highly recommended to review the contents of the files in the [resources](./resources) folder, as they contain many useful utility functions that can be used to your advantage.
-
 * Writing tests
 * Code review
 * Other guidelines
@@ -45,5 +43,5 @@ pipenv install
 
 ### Who do I talk to? ###
 
-* Repo owner or admin: Not Spencer, call Joe for a good time
+* Repo owner or admin : Not Spencer, call Joe for a good time
 * Other community or team contact

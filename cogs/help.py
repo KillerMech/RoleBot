@@ -200,13 +200,13 @@ class LoadHelp(commands.Cog, name="Help"):
         self.bot = bot
         bot.help_command = HelpCommand()
         bot.help_command.cog = self
-        print(f"{self.bot.utils.OK} {self.bot.utils.time_log()} Loaded Help Cog.")
+        print(f"Loaded Help Cog.")
 
     """
     Called when the cog is unloaded from the system.
     """
     def cog_unload(self):
-        print(f"{self.bot.utils.OK} {self.bot.utils.time_log()} Unloaded Help Cog.")
+        print(f"Unloaded Help Cog.")
 
 
 def setup(bot):

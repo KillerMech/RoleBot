@@ -20,11 +20,15 @@
 !**/*.py
 # Unignore JSON files
 !**/*.json
+<<<<<<< HEAD
 # Unignore requirements files
 !requirements.txt
 !Pipfile*
 # Unignore Dockerfile
 !Dockerfile
+=======
+
+>>>>>>> 5d59bb8b8bfb950463efae5d21355f55516af873
 
 ###
 # Ignore these specific directories
