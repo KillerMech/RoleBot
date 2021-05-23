@@ -1,7 +1,3 @@
-#  Template python-build
-
-#  This template allows you to validate your python code.
-#  The workflow allows running tests and code linting on the default branch.
 
 image: python:3.8
 
@@ -17,10 +13,13 @@ pipelines:
           caches:
             - pip
           script:
-            - export IMAGE_NAME=bascogroup/botty.py:$BITBUCKET_COMMIT
+            - export IMAGE_NAME=bascogroup/botty.py
+            - export BUILD_IMAGE=$IMAGE_NAME:$BITBUCKET_COMMIT
+            - export NEW_IMAGE=$IMAGE_NAME:latest 
             - docker build -t $IMAGE_NAME .
             - docker login --username $DOCKER_USER --password $DOCKER_PASS
-            - docker push $IMAGE_NAME
+            - docker push $BUILD_IMAGE
+            - docker push $NEW_IMAGE
     testing-main:
       - step:
           name: Docker Build
@@ -28,7 +27,10 @@ pipelines:
           caches:
             - pip
           script:
-            - export IMAGE_NAME=bascogroup/botty-test.py:$BITBUCKET_COMMIT
+            - export IMAGE_NAME=bascogroup/botty-test.py
+            - export BUILD_IMAGE=$IMAGE_NAME:$BITBUCKET_COMMIT
+            - export NEW_IMAGE=$IMAGE_NAME:latest            
             - docker build -t $IMAGE_NAME .
             - docker login --username $DOCKER_USER --password $DOCKER_PASS
-            - docker push $IMAGE_NAME
+            - docker push $BUILD_IMAGE
+            - docker push $NEW_IMAGE
