@@ -16,9 +16,8 @@ pipelines:
             - export IMAGE_NAME=bascogroup/botty.py
             - export BUILD_IMAGE=$IMAGE_NAME:$BITBUCKET_COMMIT
             - export NEW_IMAGE=$IMAGE_NAME:latest 
-            - docker build -t $IMAGE_NAME .
+            - docker build -t $NEW_IMAGE .
             - docker login --username $DOCKER_USER --password $DOCKER_PASS
-            - docker push $BUILD_IMAGE
             - docker push $NEW_IMAGE
     testing-main:
       - step:
@@ -30,7 +29,6 @@ pipelines:
             - export IMAGE_NAME=bascogroup/botty-test.py
             - export BUILD_IMAGE=$IMAGE_NAME:$BITBUCKET_COMMIT
             - export NEW_IMAGE=$IMAGE_NAME:latest            
-            - docker build -t $IMAGE_NAME .
+            - docker build -t $NEW_IMAGE .
             - docker login --username $DOCKER_USER --password $DOCKER_PASS
-            - docker push $BUILD_IMAGE
             - docker push $NEW_IMAGE
