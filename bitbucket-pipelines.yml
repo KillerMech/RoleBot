@@ -6,7 +6,7 @@ options:
 
 pipelines:
   branches:
-    production-main:
+    main:
       - step:
           name: Docker Build
           deployment: production
