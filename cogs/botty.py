@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-"""
+'''
 *******************************************************************************
 This is a Cog. These structures are used by Discord.py to create classes
 with their own commands, event listeners, and attributes.
@@ -9,46 +9,102 @@ with their own commands, event listeners, and attributes.
 Botty Mc Botface's core functions: More to come!
 
 Authors: Joe Miller (@thatnerdjoe)
-Version: 0.1
-Date: 03-20-2021
+Version: 0.3
+Date: 03-24-2021
 *******************************************************************************
-"""
+'''
 
 
-class Botty(commands.Cog):
+class Botty(commands.Cog, name="Botty McBotface"):
+    """
+    The commands used to self-administer roles and similar actions.
+    """
+
     def __init__(self, bot):
         self.bot = bot
-        print(f"{self.bot.utils.OK} {self.bot.utils.time_log()} Loaded Botty Cog.")
+        print("Loaded Botty Cog.")
 
     def cog_unload(self):
-        print(f"{self.bot.utils.OK} {self.bot.utils.time_log()} Unloaded Botty Cog.")
+        print("Unloaded Botty Cog.")
 
     @commands.command()
-    async def test(self, ctx):
+    async def ping(self, ctx):
         """
         A test function for ensuring that extensions and permissions are implemented properly.
         """
         await ctx.send("Hello!")
-        await ctx.confirm()
 
+    @commands.command(name="addrole",
+                      help="Adds a server role to self. Case insensitive.",
+                      brief="CYBV 301")
     @commands.guild_only()
-    @commands.command(brief="rolename")
-    async def addrole(self, ctx, role: discord.Role):
+    async def addrole(self, ctx, *, role=None):
         """
-        Used to add guild roles to a user
+        Used to add guild roles to a user 
+
+        NOTE: These checks are required; `except` does not handle invalid roles.
         """
-        if type(role) != str:
-            try:
-                await ctx.author.add_roles(role)
-                await ctx.send(f'{ctx.author}, successfully added role {role.name}')
-            except discord.Forbidden:
-                await ctx.send('Sorry, I do not have sufficient privileges')
-            except Exception as e:
-                await ctx.send(e)
-            return
+
+        if role == None:
+            await ctx.send(f'Please specify a role.')
+
         else:
-            await ctx.send(f'Could not find role "{role}"')
+            for each_role in ctx.guild.roles:
+                # case-insensitive roles
+                if role.lower() == each_role.name.lower():
+                    role = each_role
+                    break
+
+            if type(role) == discord.Role:
+                try:
+                    await ctx.author.add_roles(role)
+                    await ctx.send(f'{ctx.author.mention}, successfully added role {role.name}.')
+
+                except discord.Forbidden:
+                    await ctx.send('Sorry, I do not have sufficient privileges.')
+
+                except Exception as e:
+                    await ctx.send(e)
+            else:
+                await ctx.send(f'Could not find server role "{role}".')
+            """
+            TODO:   Implement role suggestions for classes.
+                    EXAMPLE - 'You entered "CYBV 352". Did you mean "CSCV 352"?'
+            """
+
+    @commands.command(name="removerole",
+                      help="Removes a server role from self. Case insensitive.",
+                      brief="CYBV 301")
+    @commands.guild_only()
+    async def removerole(self, ctx, *, role=None):
+        """
+        Used to remove guild roles from a user 
+
+        NOTE: These checks are required; `except` does not handle invalid roles.
+        """
+        if role == None:
+            await ctx.send(f'Please specify a role.')
             return
+
+        else:
+            for each_role in ctx.author.roles:
+                # case-insensitive roles
+                if role.lower() == each_role.name.lower():
+                    role = each_role
+                    break
+
+            if type(role) == discord.Role:
+                try:
+                    await ctx.author.remove_roles(role)
+                    await ctx.send(f'{ctx.author.mention}, successfully removed role {role.name}.')
+
+                except discord.Forbidden:
+                    await ctx.send('Sorry, I do not have sufficient privileges.')
+
+                except Exception as e:
+                    await ctx.send(e)
+            else:
+                await ctx.send(f'Could not find user role "{role}".')
 
 
 def setup(bot):
