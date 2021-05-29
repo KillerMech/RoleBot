@@ -1,35 +1,32 @@
-# README #
+# Botty McBotface #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+**Release:** v0.2 | **Testing:** v0.3
 
----
 
-### What is this repository for? ###
+Hello, there! This is Botty McBotface, an extensible Discord bot developed with the Discord.py module.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+This bot began as the [BASCO CyberOps Bot](https://github.com/UofA-BASCO/BASCO-cyberopsbot) but has since grown into a platform for others to collaborate and add custom features though the use of `cogs`.
+
+Currently, the bot is purpose-built for server users to self-administer certain roles. More features are planned for the future!
 
 ---
 
 ## How do I get set up? ###
 
-1. Make sure Python 3.8 is installed.
-1. Clone the repository.
-1. Open a terminal or command prompt in the clone repo, and run:
-```
-pip install pipenv
-pipenv install
-```
-4. [Create a Discord Bot Application and add it to your server](https://discordpy.readthedocs.io/en/latest/discord.html).
-1. Create an environment variable called `BASCOBOTTOKEN` (this can be changed in the [bot.py](bot.py) file), and set it to the discord bot's token.
-1. Run `pipenv run python bot.py` to start the bot.
+Botty is conveniently packaged as a Docker container so it can be deployed quickly and easily.
 
----
+1. Install the latest edition of [Docker](https://docs.docker.com/engine/install/) or a compatible container engine.
+1. Download the container image from Docker Hub
+    ```
+        $docker pull bascogroup/botty.py
+    ```
+1. Read and complete the [*Creating a Bot Account*] guide.(https://discordpy.readthedocs.io/en/latest/discord.html).
+1. The API token copied in step 7 from the bot creation guide in the previous step will be used in the next step.
+1. Run `docker run -d -e "BASCOBOTTOKEN=<YOUR API KEY HERE>" bascogroup/botty.py:latest` to start the bot.
 
-* Database configuration
-* How to run tests
-* Deployment instructions
+FAQs:
+
+In progress.
 
 ---
 

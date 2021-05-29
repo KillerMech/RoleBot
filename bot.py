@@ -20,8 +20,7 @@ Cogs are the classes that contain the added commands, event listeners, and
 attributes of these extensions.
 
 Authors: Joe Miller (@thatnerdjoe), Houghton Mayfield (@Heroicos_HM)
-Version: 0.2.1
-Date: 03-21-2021
+Version: 0.3
 *******************************************************************************
 """
 
