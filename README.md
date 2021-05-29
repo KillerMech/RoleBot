@@ -18,15 +18,24 @@ Botty is conveniently packaged as a Docker container so it can be deployed quick
 1. Install the latest edition of [Docker](https://docs.docker.com/engine/install/) or a compatible container engine.
 1. Download the container image from Docker Hub
     ```
-        $docker pull bascogroup/botty.py
+        $ docker pull bascogroup/botty.py
     ```
 1. Read and complete the [*Creating a Bot Account*] guide.(https://discordpy.readthedocs.io/en/latest/discord.html).
 1. The API token copied in step 7 from the bot creation guide in the previous step will be used in the next step.
-1. Run `docker run -d -e "BASCOBOTTOKEN=<YOUR API KEY HERE>" bascogroup/botty.py:latest` to start the bot.
+1. Finally, use the command to run the bot. 
+    ```
+        $ docker run -d -e "BASCOBOTTOKEN=<YOUR API KEY HERE>" \
+        bascogroup/botty.py:latest
+    ``` 
+    
 
 FAQs:
 
-In progress.
+**Q**. Cannot run the image and getting the error `Cannot connect to the Docker daemon...Is the docker daemon running?`
+
+**A**. Ensure the docker service is running according to your distro.
+
+...
 
 ---
 
