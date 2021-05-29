@@ -10,7 +10,6 @@ Botty Mc Botface's core functions: More to come!
 
 Authors: Joe Miller (@thatnerdjoe)
 Version: 0.3
-Date: 03-24-2021
 *******************************************************************************
 '''
 
