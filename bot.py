@@ -20,8 +20,7 @@ Cogs are the classes that contain the added commands, event listeners, and
 attributes of these extensions.
 
 Authors: Joe Miller (@thatnerdjoe), Houghton Mayfield (@Heroicos_HM)
-Version: 0.2.1
-Date: 03-21-2021
+Version: 0.3
 *******************************************************************************
 """
 
@@ -130,7 +129,7 @@ class Internal(commands.Cog, name="Internal"):
 
     @commands.command(name="restart", help="Restarts the bot.")
     @commands.guild_only()
-    @commands.has_permissions(administrator=True)
+    @commands.has_guild_permissions(manage_guild=True)
     async def restart(self, ctx):
         """
         TODO:
@@ -149,7 +148,7 @@ class Internal(commands.Cog, name="Internal"):
 
     @commands.command(name="prefix", help="Changes the command prefix of the bot.", brief="?")
     @commands.guild_only()
-    @commands.has_permissions(administrator=True)
+    @commands.has_guild_permissions(manage_guild=True)
     async def prefix(self, ctx, prefix: str):
         """
         Updates the active command prefix that the bot uses for communication,
@@ -214,7 +213,7 @@ class Internal(commands.Cog, name="Internal"):
                     help="A group of commands for loading, unloading, and reloading cogs.",
                     invoke_without_command=True)
     @commands.guild_only()
-    @commands.has_permissions(administrator=True)
+    @commands.has_guild_permissions(manage_guild=True)
     async def cog(self, ctx):
         """
         The parent command for all commands related to managing cog extensions.
@@ -226,6 +225,7 @@ class Internal(commands.Cog, name="Internal"):
     @cog.command(name="load",
                  help="Load a cog extension file by name.\n`help` refers to the `./cogs/help.py` file.",
                  brief="help")
+    @commands.has_guild_permissions(manage_guild=True)
     async def load(self, ctx, cog_name: str):
         """
         Loads a cog into the system by name.
@@ -290,6 +290,7 @@ class Internal(commands.Cog, name="Internal"):
     @cog.command(name="unload",
                  help="Unload a cog by name.\n`help` refers to the `./cogs/help.py` file.",
                  brief="help")
+    @commands.has_guild_permissions(manage_guild=True)
     async def unload(self, ctx, cog_name: str):
         """
         Unloads a registered extension by the name given.
@@ -353,6 +354,7 @@ class Internal(commands.Cog, name="Internal"):
     @cog.command(name="reload",
                  help="Reload a cog by name.\n`cogs.help` refers to the `./cogs/help.py` file.",
                  brief="help")
+    @commands.has_guild_permissions(manage_guild=True)
     async def reload(self, ctx, cog_name: str):
         """
         Reloads an extension by the given name.
