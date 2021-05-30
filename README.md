@@ -1,6 +1,6 @@
 # Botty McBotface #
 
-**Release:** v0.2 | **Testing:** v0.3
+**Release:** v0.3 | **Testing:** v0.3
 
 
 Hello, there! This is Botty McBotface, an extensible Discord bot developed with the Discord.py module.
@@ -20,7 +20,7 @@ Botty is conveniently packaged as a Docker container so it can be deployed quick
     ```
         $ docker pull bascogroup/botty.py
     ```
-1. Read and complete the [*Creating a Bot Account*] guide.(https://discordpy.readthedocs.io/en/latest/discord.html).
+1. Read and complete the [*Creating a Bot Account*](https://discordpy.readthedocs.io/en/latest/discord.html) guide.
 1. The API token copied in step 7 from the bot creation guide in the previous step will be used in the next step.
 1. Finally, use the command to run the bot. 
     ```
@@ -29,25 +29,24 @@ Botty is conveniently packaged as a Docker container so it can be deployed quick
     ``` 
     
 
-FAQs:
+## FAQs:
 
 **Q**. Cannot run the image and getting the error `Cannot connect to the Docker daemon...Is the docker daemon running?`
 
-**A**. Ensure the docker service is running according to your distro.
+**A**. Ensure the `docker` service is running according to your operating system's documentation.
 
-...
+**...**
 
 ---
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+The `main` branch representes the latest stable release, and `testing-main` is -- unsurprisingly -- the development branch. 
+
+Feel free to contribute new features as cogs or independent modules to the repo and perform a *pull request* onto the `testing-main` branch for review.
 
 ---
 
 ### Who do I talk to? ###
 
-* Repo owner or admin : Not Spencer, call Joe for a good time
-* Other community or team contact
+* Repo owner or admin 
